@@ -1,9 +1,70 @@
 {
-    "development_board": "promicro",
-    "features": {
-        "rgblight": true
+    "manufacturer": "Adnan",
+    "maintainer": "adnanaq",
+    "keyboard_name": "dani_crkbd_1",
+
+    "processor": "RP2040",
+    "bootloader": "rp2040",
+
+    "diode_direction": "COL2ROW",
+    "matrix_pins": {
+        "cols": ["GP29", "GP28", "GP27", "GP26", "GP22", "GP20"],
+        "rows": ["GP4", "GP5", "GP6", "GP7"]
     },
+
     "rgb_matrix": {
+        "driver": "ws2812",
+        "max_brightness": 200,
+        "split_count": [27, 27],
+        "animations": {
+            "splash": true,
+            "hue_wave": true,
+            "band_sat": true,
+            "band_val": true,
+            "cycle_all": true,
+            "raindrops": true,
+            "breathing": true,
+            "pixel_rain": true,
+            "pixel_flow": true,
+            "multisplash": true,
+            "dual_beacon": true,
+            "alphas_mods": true,
+            "cycle_out_in": true,
+            "cycle_spiral": true,
+            "digital_rain": true,
+            "solid_splash": true,
+            "hue_pendulum": true,
+            "cycle_up_down": true,
+            "hue_breathing": true,
+            "pixel_fractal": true,
+            "cycle_pinwheel": true,
+            "solid_reactive": true,
+            "rainbow_beacon": true,
+            "typing_heatmap": true,
+            "band_spiral_sat": true,
+            "band_spiral_val": true,
+            "gradient_up_down": true,
+            "cycle_left_right": true,
+            "band_pinwheel_sat": true,
+            "band_pinwheel_val": true,
+            "cycle_out_in_dual": true,
+            "rainbow_pinwheels": true,
+            "solid_multisplash": true,
+            "jellybean_raindrops": true,
+            "gradient_left_right": true,
+            "solid_reactive_wide": true,
+            "solid_reactive_nexus": true,
+            "solid_reactive_cross": true,
+            "solid_reactive_simple": true,
+            "rainbow_moving_chevron": true,
+            "solid_reactive_multiwide": true,
+            "solid_reactive_multicross": true,
+            "solid_reactive_multinexus": true
+        },
+        "default": {
+            "hue": 200,
+            "animation": "breathing"
+        },
         "layout": [
             {"x": 85, "y": 16, "flags": 2},
             {"x": 50, "y": 13, "flags": 2},
@@ -59,28 +120,70 @@
             {"matrix": [4, 0], "x": 224, "y": 7, "flags": 1},
             {"matrix": [5, 0], "x": 224, "y": 24, "flags": 1},
             {"matrix": [6, 0], "x": 224, "y": 41, "flags": 1}
-        ],
-        "split_count": [27, 27]
+        ]
     },
-    "rgblight": {
-        "led_count": 54,        
-        "split_count": [27, 27]
+
+    "build": {
+        "lto": true,
+        "firmware_format": "uf2"
     },
+    "features": {
+        "wpm": true,
+        "nkro": true,
+        "oled": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "bootmagic": true,
+        "auto_shift": true,
+        "rgb_matrix": true,
+        "dynamic_macro": true
+    },
+
+    "stenography": {
+        "enabled": true
+    },
+
+    "caps_word": {
+        "enabled": true,
+
+    },
+
+    "ws2812": {
+        "pin": "GP25",
+        "driver": "vendor"
+    },
+    "url": "",
+    "usb": {
+        "pid": "0x0000",
+        "vid": "0xFEED",
+        "device_version": "1.0.0"
+    },
+
     "split": {
+        "enabled": true,
+        "matrix_pins": {
+            "right": {
+                "cols": ["GP29", "GP28", "GP27", "GP26", "GP22", "GP20"],
+                "rows": ["GP4", "GP5", "GP6", "GP7"]
+                }
+        },
         "serial": {
-            "pin": "D2"
+            "driver": "vendor"
         },
         "transport": {
             "sync": {
-                "matrix_state": true
+                "wpm": true,
+                "oled": true,
+                "haptic": true,
+                "activity": true,
+                "modifiers": true,
+                "indicators": true,
+                "layer_state": true,
+                "matrix_state": true,
             }
         }
-    },
-    "ws2812": {
-        "pin": "D3"
-    },
-    "layout_aliases": {
-        "LAYOUT": "LAYOUT_split_3x6_3"
     },
     "layouts": {
         "LAYOUT_split_3x6_3": {
