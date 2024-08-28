@@ -147,7 +147,6 @@
 
     "caps_word": {
         "enabled": true
-
     },
 
     "ws2812": {
