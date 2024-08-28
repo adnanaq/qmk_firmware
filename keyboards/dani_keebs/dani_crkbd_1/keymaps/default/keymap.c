@@ -7,7 +7,7 @@ enum layers_nameKc {
   _MERCURY,
   _VENUS,
   _EARTH
-}
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /*

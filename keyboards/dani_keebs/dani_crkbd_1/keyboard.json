@@ -146,7 +146,7 @@
     },
 
     "caps_word": {
-        "enabled": true,
+        "enabled": true
 
     },
 
@@ -159,6 +159,10 @@
         "pid": "0x0000",
         "vid": "0xFEED",
         "device_version": "1.0.0"
+    },
+
+    "oled": {
+        "driver": "ssd1306"
     },
 
     "split": {
@@ -181,7 +185,7 @@
                 "modifiers": true,
                 "indicators": true,
                 "layer_state": true,
-                "matrix_state": true,
+                "matrix_state": true
             }
         }
     },
