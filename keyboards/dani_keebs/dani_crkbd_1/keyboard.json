@@ -1,6 +1,6 @@
 {
-    "manufacturer": "Adnan",
-    "maintainer": "adnanaq",
+    "manufacturer": "",
+    "maintainer": "",
     "keyboard_name": "dani_crkbd_1",
 
     "processor": "RP2040",
@@ -14,6 +14,8 @@
 
     "rgb_matrix": {
         "driver": "ws2812",
+        "led_count": 54,
+        "sleep": true,
         "max_brightness": 200,
         "split_count": [27, 27],
         "animations": {
@@ -150,7 +152,7 @@
     },
 
     "ws2812": {
-        "pin": "GP25",
+        "pin": "GP10",
         "driver": "vendor"
     },
     "url": "",

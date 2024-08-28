@@ -24,7 +24,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define QUICK_TAP_TERM 0
 #define TAPPING_TERM 1
-#define MASTER_LEFT
 
 #define AUTO_SHIFT_TIMEOUT 200
 #define AUTO_SHIFT_MODIFIERS
