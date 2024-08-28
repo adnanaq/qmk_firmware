@@ -167,6 +167,8 @@
 
     "split": {
         "enabled": true,
+        "main": "left",
+        "soft_serial_pin": "GP1",
         "matrix_pins": {
             "right": {
                 "cols": ["GP29", "GP28", "GP27", "GP26", "GP22", "GP20"],
@@ -177,6 +179,7 @@
             "driver": "vendor"
         },
         "transport": {
+            "protocol": "serial",
             "sync": {
                 "wpm": true,
                 "oled": true,
