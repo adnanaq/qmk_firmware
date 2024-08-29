@@ -65,7 +65,7 @@
         },
         "default": {
             "hue": 200,
-            "animation": "breathing"
+            "animation": "splash"
         },
         "layout": [
             {"x": 85, "y": 16, "flags": 2},
@@ -161,7 +161,7 @@
     },
 
     "ws2812": {
-        "pin": "GP10",
+        "pin": "GP0",
         "driver": "vendor"
     },
     "url": "",

@@ -26,3 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define AUTO_SHIFT_TIMEOUT 150
 #define AUTO_SHIFT_MODIFIERS
+
+// #define I2C_DRIVER I2CD1
+// #define I2C1_SDA_PIN GP2
+// #define I2C1_SCL_PIN GP3
+
+#define RGB_MATRIX_KEYPRESSES
