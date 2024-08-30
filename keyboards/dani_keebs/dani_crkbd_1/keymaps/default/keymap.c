@@ -3,9 +3,16 @@
 
 #include QMK_KEYBOARD_H
 
-enum layers_nameKc {
-  _BASE,
-  _SECONDARY
+enum layers_name {
+  _QWERTY,
+  _SECONDARY,
+  _PLOVER
+};
+
+enum custom_keycodes {
+    QWERTY = SAFE_RANGE,
+    PLOVER,
+    EXT_PLV
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -23,11 +30,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┤   │   │   ├───┘
       *                       └───┘   └───┘
       */
-    [_BASE] = LAYOUT_split_3x6_3(
+    [_QWERTY] = LAYOUT_split_3x6_3(
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
         KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                                            KC_LGUI, MO(_SECONDARY), KC_SPC,     KC_SPC,  KC_ENT,  KC_RALT
+                                            KC_LGUI, MO(_SECONDARY), KC_SPC,     PLOVER,  KC_ENT,  KC_RALT
   ),
 
      [_SECONDARY] = LAYOUT_split_3x6_3(
@@ -35,7 +42,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
-  )
+  ),
+
+      /* Plover layer (http://opensteno.org)
+      * ┌───┬───┬───┬───┬───┬───┐─────┌─────┬       ┌─────┬─────┬─────┬─────┬─────┐─────┐
+      * │  #  │  #  │  #  │  #  │  #  │  #  │       |  #  │  #  │  #  │  #  │  #  │  #  │
+      * ├─────┼─────┼─────┼─────┼─────┼─────┤       ├─────┼─────┼─────┼─────┼─────┼─────┤
+      * │ Exit│  S  │  T  │  P  │  H  │  *  │       │  *  │  F  │  P  │  L  │  T  │  D  │
+      * ├─────┼─────┼─────┼─────┼─────┼─────┤       ├─────┼─────┼─────┼─────┼─────┼─────┤
+      * │     │  S  │  K  │  W  │  R  │  *  │       │  *  │  R  │  B  │  G  │  S  │  Z  │
+      * ├─────┼─────┼─────┼─────┼─────┼─────┤       ├─────┼─────┼─────┼─────┼─────┼─────┤
+      *                           ┌───┐                   ┌───┐
+      *                           │ A ├───┐           ┌───┤ U │
+      *                           └───┤ O ├───┐   ┌───┤ E ├───┘
+      *                               └───┤   │   │   ├───┘
+      *                                   └───┘   └───┘
+     */
+
+    [_PLOVER] = LAYOUT_ortho_5x12(
+        STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,                        STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
+        EXT_PLV, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                       STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+        XXXXXXX, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+                                        STN_A,   STN_O, XXXXXXX                XXXXXXX, STN_E, STN_U
+    ),
 };
 
 #ifdef OLED_ENABLE
@@ -116,3 +145,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 #endif // OLED_ENABLE
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case QWERTY:
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(_QWERTY);
+            }
+            return false;
+        case PLOVER:
+            if (!record->event.pressed) {
+                layer_on(_PLOVER);
+            }
+            return false;
+        case EXT_PLV:
+            if (record->event.pressed) {
+                layer_off(_PLOVER);
+            }
+            return false;
+    }
+    return true;
+};
