@@ -59,11 +59,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                                   └───┘   └───┘
      */
 
-    [_PLOVER] = LAYOUT_ortho_5x12(
+    [_PLOVER] = LAYOUT_split_3x6_3(
         STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  STN_N6,                        STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,  STN_NC,
         EXT_PLV, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                       STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
         XXXXXXX, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2,                       STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-                                        STN_A,   STN_O, XXXXXXX                XXXXXXX, STN_E, STN_U
+                                        STN_A,   STN_O, XXXXXXX,                XXXXXXX, STN_E, STN_U
     ),
 };
 
@@ -80,7 +80,7 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
     switch (layer_state) {
-        case _BASE:
+        case _QWERTY:
             oled_write_ln_P(PSTR("Default"), false);
             break;
     }
@@ -137,12 +137,12 @@ bool oled_task_user(void) {
     return false;
 }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
-    set_keylog(keycode, record);
-  }
-  return true;
-}
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//   if (record->event.pressed) {
+//     set_keylog(keycode, record);
+//   }
+//   return true;
+// }
 
 #endif // OLED_ENABLE
 
