@@ -20,5 +20,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#define EXTRA_SHORT_COMBOS
 #define RGB_MATRIX_KEYPRESSES

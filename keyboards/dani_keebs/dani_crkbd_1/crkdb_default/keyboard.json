@@ -1,0 +1,13 @@
+{
+    "features": {
+        "auto_shift": true
+    },
+
+    "caps_words": {
+        "enabled": true
+    },
+
+    "stenography": {
+        "enabled": true
+    }
+}
