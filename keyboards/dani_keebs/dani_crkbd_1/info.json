@@ -1,8 +1,6 @@
 {
     "manufacturer": "Adnan",
-    "maintainer": "adnanaq",
     "keyboard_name": "dani_crkbd_1",
-    "url": "",
 
     "usb": {
         "pid": "0x0000",
